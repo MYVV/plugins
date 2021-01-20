@@ -21,7 +21,7 @@ class CameraPreview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return controller.value.isInitialized
+    return controller.value.isInitialized && controller?.value?.previewSize?.width != null
         ? AspectRatio(
             aspectRatio: _isLandscape()
                 ? controller.value.aspectRatio
@@ -38,7 +38,7 @@ class CameraPreview extends StatelessWidget {
               ],
             ),
           )
-        : Container();
+        : CircularProgressIndicator();
   }
 
   DeviceOrientation _getApplicableOrientation() {
